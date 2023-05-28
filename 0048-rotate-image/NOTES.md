@@ -7,3 +7,4 @@ time comp. = O(n/2 * n/2)
 n/2 almost for 1 st loop and almost n/2 for second loop.
 Space comp. = O(1)
 For reversing the rows, we will iterate to half in every row using two pointers and swap the elements with the end ke elments.
+Also, in the loops, we can either iterate on the upper triangle in n-1 rows and swap the elments or in the lower triangle in all rows and swap accordingly.
