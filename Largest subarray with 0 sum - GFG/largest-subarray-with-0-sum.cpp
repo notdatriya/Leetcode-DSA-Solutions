@@ -41,6 +41,24 @@ class Solution{
         }
         return mlength;
     }
+    
+    
+    //Optimal approach if the array contains only positives and zeroes
+    
+    // int left=0; int right=0;
+    // long long sum=0;
+    // int maxlen=0;
+    // while(right<n){
+    //     while(left<=right && sum>k){
+    //         sum-=A[left];
+    //         left++;
+    //     }
+    //     if(sum==k){
+    //         maxlen=max(maxlen,right-left+1);
+    //     }
+    //     right++;
+    //     if(right<n)sum+=A[right];
+    // }
 
 };
 
