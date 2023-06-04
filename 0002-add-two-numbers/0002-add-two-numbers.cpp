@@ -34,5 +34,8 @@ public:
         }
         
         return dummy->next;
+        
+        //Time-O(max(length of both linked list))
+        //space-O(n)
     }
 };
