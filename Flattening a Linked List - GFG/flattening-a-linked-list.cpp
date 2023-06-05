@@ -145,6 +145,8 @@ Node *flatten(Node *root)
     root->next=flatten(root->next);
   
    //first merge last two ll, then last third and merged one and so on.
+   //Time(O(N))  N is total no. of nodes present
+   //Space(O(1));
    
    root=merge(root,root->next);
    return root;
