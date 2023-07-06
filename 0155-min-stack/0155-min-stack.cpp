@@ -12,12 +12,7 @@ public:
         else{
             s1.push({val,val});
         }
-//         while(!s2.empty() && s2.top()>=s1.top()){
-//             s2.pop();
-//         }
-//         if(s2.empty()){
-//              s2.push(s1.top()); 
-//         }
+
         
     }
     
@@ -25,10 +20,6 @@ public:
         
            
         if(!s1.empty()){
-      //    int c=s1.top();
-      // if(!s2.empty() && s2.top()==c){
-      //       s2.pop();
-      //   }
             s1.pop();
             return;
            
