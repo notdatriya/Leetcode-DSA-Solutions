@@ -1,30 +1,35 @@
 class StockSpanner {
 public:
-    vector<int>arr;
+    stack<pair<int,int>>st;
     StockSpanner() {
-        arr={};
     }
     
     int next(int price) {
-           // if(arr.empty()){
-           //      arr.push_back(price);
-           //      return 1;
-           //  }
-        int count=0;
-        int maxcount=0;
-        arr.push_back(price);
-        for(int i=arr.size()-1;i>=0;i--){
-            if(arr[i]>price){
-                count=0;
-                break;
-            }
-         else{
-             count++;
-             maxcount=max(maxcount,count);
-         }
-        }
+//         int count=0;
+//         int maxcount=0;
+//         arr.push_back(price);
+//         for(int i=arr.size()-1;i>=0;i--){
+//             if(arr[i]>price){
+//                 count=0;
+//                 break;
+//             }
+//          else{
+//              count++;
+//              maxcount=max(maxcount,count);
+//          }
+//         }
          
-        return maxcount;
+//         return maxcount;
+        
+        
+        //m-2
+        int count=1;
+        while(!st.empty() && st.top().first<=price){
+            count+=st.top().second;
+            st.pop();
+        }
+        st.push({price,count});
+        return count;
     }
 };
 
