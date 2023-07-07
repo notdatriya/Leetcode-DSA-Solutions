@@ -5,8 +5,8 @@ public:
          int n=s.length();                          
         string ans;
         string str;
-        int i=0;
-        while (i<n){
+        // int i=0;
+        for(int i=0;i<n;i++){
             if(s[i]!=' '){  
             str+=s[i];
             }
@@ -15,8 +15,7 @@ public:
                 cout<<st.top();
                 str="";
             }
-            i++;
-           
+             
         }
         
         while(st.size()>1){
