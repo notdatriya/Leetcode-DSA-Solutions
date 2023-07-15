@@ -12,19 +12,40 @@
 class Solution {
 public:
     
-    int solve(TreeNode* node,int &maxi){
-        if(node==NULL){
-            return 0;
-        }
+//     int solve(TreeNode* node,int &maxi){
+//         if(node==NULL){
+//             return 0;
+//         }
         
-        int lh=solve(node->left,maxi);
-        int rh=solve(node->right,maxi);
-        maxi=max(maxi,lh+rh);
-        return 1+ max(lh,rh);
+//         int lh=solve(node->left,maxi);
+//         int rh=solve(node->right,maxi);
+//         maxi=max(maxi,lh+rh);
+//         return 1+ max(lh,rh);
+//     }
+    
+    int maxi=0;
+    int findh(TreeNode* root){
+        if(root==NULL)return 0;
+        
+        int lh=findh(root->left);
+        int rh=findh(root->right);
+        return 1+max(lh,rh);
     }
     int diameterOfBinaryTree(TreeNode* root) {
-        int maxi=0;
-        solve(root,maxi);
+        // int maxi=0;
+        // solve(root,maxi);
+        // return maxi;
+        
+        
+        //m-2 less optimized
+        if(root==NULL)return 0;
+        int lh=findh(root->left);
+        int rh=findh(root->right);
+        maxi=max(maxi,lh+rh);
+        diameterOfBinaryTree(root->left);
+        diameterOfBinaryTree(root->right);
+        
         return maxi;
+
     }
 };
