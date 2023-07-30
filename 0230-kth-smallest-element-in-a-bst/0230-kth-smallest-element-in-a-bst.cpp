@@ -16,8 +16,9 @@ public:
 	return NULL;
 	
 	TreeNode* left=solve(root->left,k);
-	if(left!=NULL)
+	if(left!=NULL){
 	return left;
+    }
         
 	k--;
 	if(k==0)
