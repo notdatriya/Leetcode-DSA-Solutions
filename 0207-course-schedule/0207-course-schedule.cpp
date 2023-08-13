@@ -19,7 +19,7 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>> adj(numCourses);
         for(auto num : prerequisites){
-            adj[num[1]].push_back(num[0]);
+            adj[num[0]].push_back(num[1]);
         }
         int vis[numCourses];
         int pathvis[numCourses];
