@@ -1,39 +1,38 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h> 
 using namespace std; 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution
 {
 public:
+   void summ(int i,vector<int>&num,int sum,vector<int>&ans){
+	if(i==num.size()){
+		ans.push_back(sum);
+		return;
+	}
 
-void summ(vector<int>&arr,int N,int index,int sum,vector<int>&ans){
-  if(index==N){
-      ans.push_back(sum);
-      return;
-  }
-  //every element can be included or not,two choices
-  //time complexity-O(2^n )+O(2^nlog(2^n))
-  //space-O(2^n)
-  summ(arr,N,index+1,sum+arr[index],ans);
-    summ(arr,N,index+1,sum,ans);
+	sum+=num[i];
+	summ(i+1,num,sum,ans);
+	sum-=num[i];
+	summ(i+1,num,sum,ans);
 
 }
-public:
+
+   
     vector<int> subsetSums(vector<int> arr, int N)
     {
         // Write Your Code here
-        vector<int>ans;
-        summ(arr,N,0,0,ans);
-        sort(ans.begin(),ans.end());
-        return ans;
-      
-         
-        
+        int sum=0;
+	vector<int>ans;
+	summ(0,arr,sum,ans);
+	sort(ans.begin(),ans.end());
+	return ans;
+	
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main()
 {
     int t;
@@ -55,4 +54,5 @@ int main()
         cout<<endl;
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
