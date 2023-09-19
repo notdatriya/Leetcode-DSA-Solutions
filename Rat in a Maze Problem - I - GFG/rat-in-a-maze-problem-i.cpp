@@ -11,39 +11,60 @@ using namespace std;
 class Solution{
     public:
     
-    void solve(int row,int col,vector<vector<int>>&m,int n,vector<vector<int>>&visited,vector<string>&ans,string move){
+    // void solve(int row,int col,vector<vector<int>>&m,int n,vector<vector<int>>&visited,vector<string>&ans,string move){
+    //     if(row==n-1 && col==n-1){
+    //         ans.push_back(move);
+    //         return;
+    //     }
+        
+    //     if(row+1<=n-1 && !visited[row+1][col] && m[row+1][col]==1){
+    //         visited[row][col]=true;
+    //         solve(row+1,col,m,n,visited,ans,move+"D");
+    //          visited[row][col]=false;
+
+    //     }
+    //      if(col-1>=0 && !visited[row][col-1] && m[row][col-1]==1){
+    //         visited[row][col]=true;
+    //         solve(row,col-1,m,n,visited,ans,move+"L");
+    //          visited[row][col]=false;
+    //     }
+        
+    //      if(col+1<=n-1 && !visited[row][col+1] && m[row][col+1]==1){
+    //         visited[row][col]=true;
+    //         solve(row,col+1,m,n,visited,ans,move+"R");
+    //          visited[row][col]=false;
+
+    //     }
+        
+    //      if(row-1>=0 && !visited[row-1][col] && m[row-1][col]==1){
+    //         visited[row][col]=true;
+    //         solve(row-1,col,m,n,visited,ans,move+"U");
+    //          visited[row][col]=false;
+    //     }
+        
+        
+        
+    // }
+    
+    void solve(int row,int col,vector<vector<int>>&m,int n, vector<vector<int>>&vis,vector<string>&ans,string move){
+         if(row<0 || col<0 || row>=n || col>=n || vis[row][col]==true || m[row][col]==0){
+            return;
+        }
+        
         if(row==n-1 && col==n-1){
             ans.push_back(move);
             return;
         }
         
-        if(row+1<=n-1 && !visited[row+1][col] && m[row+1][col]==1){
-            visited[row][col]=true;
-            solve(row+1,col,m,n,visited,ans,move+"D");
-             visited[row][col]=false;
+       
+        
+        vis[row][col]=1;
+        solve(row+1,col,m,n,vis,ans,move+"D");
+        solve(row,col-1,m,n,vis,ans,move+"L");
+        solve(row,col+1,m,n,vis,ans,move+"R");
+        solve(row-1,col,m,n,vis,ans,move+"U");
+        vis[row][col]=0;
 
-        }
-         if(col-1>=0 && !visited[row][col-1] && m[row][col-1]==1){
-            visited[row][col]=true;
-            solve(row,col-1,m,n,visited,ans,move+"L");
-             visited[row][col]=false;
-        }
-        
-         if(col+1<=n-1 && !visited[row][col+1] && m[row][col+1]==1){
-            visited[row][col]=true;
-            solve(row,col+1,m,n,visited,ans,move+"R");
-             visited[row][col]=false;
-
-        }
-        
-         if(row-1>=0 && !visited[row-1][col] && m[row-1][col]==1){
-            visited[row][col]=true;
-            solve(row-1,col,m,n,visited,ans,move+"U");
-             visited[row][col]=false;
-        }
-        
-        
-        
     }
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
@@ -57,6 +78,7 @@ class Solution{
 };
 
     
+
 
 
 //{ Driver Code Starts.
