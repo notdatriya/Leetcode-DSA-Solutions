@@ -14,17 +14,34 @@ public:
         // return solve(0,0,triangle,dp);
         
         //tabulation
+        // for(int i=m-1;i>=0;i--){
+        //     for(int j=i;j>=0;j--){
+        //         if(i==m-1){
+        //             dp[i][j]=triangle[i][j];
+        //             continue;
+        //         }
+        //         int down=dp[i+1][j];
+        //         int dig=dp[i+1][j+1];
+        //         dp[i][j]=triangle[i][j] +min(down,dig);
+        //     }
+        // }
+        // return dp[0][0];
+        
+        //space-optimized
+        vector<int>front(m,0);
         for(int i=m-1;i>=0;i--){
+            vector<int>curr(m,0);
             for(int j=i;j>=0;j--){
                 if(i==m-1){
-                    dp[i][j]=triangle[i][j];
+                    curr[j]=triangle[i][j];
                     continue;
                 }
-                int down=dp[i+1][j];
-                int dig=dp[i+1][j+1];
-                dp[i][j]=triangle[i][j] +min(down,dig);
+                int down=front[j];
+                int dig=front[j+1];
+                curr[j]=triangle[i][j] +min(down,dig);
             }
+            front=curr;
         }
-        return dp[0][0];
+        return front[0];
     }
 };
