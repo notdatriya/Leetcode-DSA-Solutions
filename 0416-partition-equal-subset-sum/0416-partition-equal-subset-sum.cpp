@@ -28,20 +28,43 @@ public:
         
         
         //tabulation
-        for(int i=0;i<n;i++)dp[i][0]=true;
-        if(nums[0]<=totsum/2)dp[0][nums[0]]=true;
+//         for(int i=0;i<n;i++)dp[i][0]=true;
+//         if(nums[0]<=totsum/2)dp[0][nums[0]]=true;
         
+//         for(int i=1;i<n;i++){
+//             for(int target=1;target<=totsum/2;target++){
+                
+//                 bool notpick=dp[i-1][target];
+//                 bool pick=false;
+//                 if(nums[i]<=target){
+//                     pick=dp[i-1][target-nums[i]];
+//                  }
+//                      dp[i][target]=pick||notpick;
+//                 }
+//         }
+//         return dp[n-1][totsum/2];
+        
+        //space
+        int k=totsum/2;
+         vector<bool>prev(k+1,false);
+        vector<bool>curr(k+1,false);
+        prev[0]=true;
+        
+        if(nums[0]<=totsum/2)prev[nums[0]]=true;
+
         for(int i=1;i<n;i++){
             for(int target=1;target<=totsum/2;target++){
+                        curr[0]=true;
                 
-                bool notpick=dp[i-1][target];
+                bool notpick=prev[target];
                 bool pick=false;
                 if(nums[i]<=target){
-                    pick=dp[i-1][target-nums[i]];
+                    pick=prev[target-nums[i]];
                  }
-                     dp[i][target]=pick||notpick;
+                     curr[target]=pick||notpick;
                 }
+            prev=curr;
         }
-        return dp[n-1][totsum/2];
+        return prev[totsum/2];
     }
 };
