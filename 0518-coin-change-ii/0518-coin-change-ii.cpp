@@ -23,23 +23,45 @@ public:
         // return ans;
         
         //tabulation
-       for(int target=0;target<=amount;target++){
-           if(target%coins[0]==0) dp[0][target]=1;
-           else if(target==0)dp[0][target]=1;
-           else dp[0][target]=0;
+//        for(int target=0;target<=amount;target++){
+//            if(target%coins[0]==0) dp[0][target]=1;
+//            else if(target==0)dp[0][target]=1;
+//            else dp[0][target]=0;
+//        }
+        
+//         for(int i=1;i<n;i++){
+//             for(int target=0;target<=amount;target++){
+//                 int notpick=dp[i-1][target];
+//         int pick=0;
+//         if(coins[i]<=target){
+//         pick=dp[i][target-coins[i]];
+//         }
+//         dp[i][target]=pick+notpick;
+//             }
+//         }
+//         return dp[n-1][amount];
+        
+        //space
+        vector<int>prev(amount+1,0);
+        vector<int>curr(amount+1,0);
+        for(int target=0;target<=amount;target++){
+           if(target%coins[0]==0) prev[target]=1;
+           else if(target==0)prev[target]=1;
+           else prev[target]=0;
        }
         
         for(int i=1;i<n;i++){
             for(int target=0;target<=amount;target++){
-                int notpick=dp[i-1][target];
+                int notpick=prev[target];
         int pick=0;
         if(coins[i]<=target){
-        pick=dp[i][target-coins[i]];
+        pick=curr[target-coins[i]];
         }
-        dp[i][target]=pick+notpick;
+        curr[target]=pick+notpick;
             }
+            prev=curr;
         }
-        return dp[n-1][amount];
+        return prev[amount];
         
         
     }
