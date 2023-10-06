@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int solve(int i,int target){
+    int solve(int i,int target,vector<vector<int>>&dp){
         if(i==1){
             if(target==i){
                 return i;
@@ -11,14 +11,17 @@ public:
             return 1;
         }
         
-        int notpick=1* solve(i-1,target);
+        if(dp[i][target]!=-1)return dp[i][target];
+        
+        int notpick=1* solve(i-1,target,dp);
         int pick=1;
         if(i<=target){
-            pick=i*solve(i,target-i);
+            pick=i*solve(i,target-i,dp);
         }
-        return max(pick,notpick);
+        return dp[i][target]=max(pick,notpick);
     }
     int integerBreak(int n) {
-        return solve(n-1,n);
+        vector<vector<int>>dp(n,vector<int>(n+1,-1));
+        return solve(n-1,n,dp);
     }
 };
