@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int solve(int i,int transaction,vector<int>&prices,int n,vector<vector<int>>&dp,int k){
+        if(i==n || transaction==2*k)return 0;
+        if(dp[i][transaction]!=-1)return dp[i][transaction];
+        int profit=0;
+        if(transaction%2==0){
+            //buy
+        profit= max(-prices[i] +solve(i+1,transaction+1,prices,n,dp,k),0+ solve(i+1,transaction,prices,n,dp,k));
+
+        }
+        else{
+    profit=max(prices[i]+solve(i+1,transaction+1,prices,n,dp,k),0+solve(i+1,transaction,prices,n,dp,k));
+         
+        }
+        return dp[i][transaction]=profit;
+    }
+    int maxProfit(int k, vector<int>& prices) {
+        int n=prices.size();
+        vector<vector<int>>dp(n,vector<int>(2*k+1,-1));
+        return solve(0,0,prices,n,dp,k);
+    }
+};
