@@ -45,7 +45,7 @@ public:
             front2=front1;
             front1=curr;
         }
-        return front1[1];
+        return curr[1];
 
     }
 };
