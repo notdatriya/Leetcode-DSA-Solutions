@@ -12,7 +12,28 @@ public:
     }
     int paintWalls(vector<int>& cost, vector<int>& time) {
         int n=cost.size();
-        vector<vector<int>> dp(n,vector<int>(n+1,-1));
-        return solve(n-1,n,cost, time,dp);
+        vector<vector<int>> dp(n+1,vector<int>(n+1,0));
+        // return solve(n-1,n,cost, time,dp);
+        
+        //tabulation
+        for(int rem=1;rem<=n;rem++)dp[0][rem]=1e9;
+        
+        for(int i=1;i<=n;i++){
+            for(int rem=1;rem<=n;rem++){
+                int notpick= dp[i-1][rem];
+                int pick;
+                if(rem-1-time[i-1]>0){
+                    pick=cost[i-1]+ dp[i-1][rem-1-time[i-1]];
+                    
+                }
+                else{
+                    pick= cost[i-1] ;
+                }
+               
+        dp[i][rem]=min(pick,notpick);
+            }
+        }
+        return dp[n][n];
+        
     }
 };
