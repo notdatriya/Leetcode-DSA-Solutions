@@ -16,24 +16,49 @@ public:
         // return solve(n-1,n,cost, time,dp);
         
         //tabulation
-        for(int rem=1;rem<=n;rem++)dp[0][rem]=1e9;
+//         for(int rem=1;rem<=n;rem++)dp[0][rem]=1e9;
+        
+//         for(int i=1;i<=n;i++){
+//             for(int rem=1;rem<=n;rem++){
+//                 int notpick= dp[i-1][rem];
+//                 int pick;
+//                 if(rem-1-time[i-1]>0){
+//                     pick=cost[i-1]+ dp[i-1][rem-1-time[i-1]];
+                    
+//                 }
+//                 else{
+//                     pick= cost[i-1] ;
+//                 }
+               
+//         dp[i][rem]=min(pick,notpick);
+//             }
+//         }
+//         return dp[n][n];
+        
+        
+        //space -optimized
+        
+        vector<int>prev(n+1,0);
+        vector<int>curr(n+1,0);
+         for(int rem=1;rem<=n;rem++)prev[rem]=1e9;
         
         for(int i=1;i<=n;i++){
             for(int rem=1;rem<=n;rem++){
-                int notpick= dp[i-1][rem];
+                int notpick= prev[rem];
                 int pick;
                 if(rem-1-time[i-1]>0){
-                    pick=cost[i-1]+ dp[i-1][rem-1-time[i-1]];
+                    pick=cost[i-1]+ prev[rem-1-time[i-1]];
                     
                 }
                 else{
                     pick= cost[i-1] ;
                 }
                
-        dp[i][rem]=min(pick,notpick);
+        curr[rem]=min(pick,notpick);
             }
+            prev=curr;
         }
-        return dp[n][n];
+        return prev[n];
         
     }
 };
