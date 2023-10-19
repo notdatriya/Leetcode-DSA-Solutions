@@ -25,7 +25,6 @@ public:
         color[i]=col;
         for(auto it:graph[i]){
             if(color[it]==-1){
-                color[it]=1-col;
                 if(dfs(graph,color,it,1-col)==false)return false;
             }
             else if(color[it]==col){
