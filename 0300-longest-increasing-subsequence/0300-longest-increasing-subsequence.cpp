@@ -34,6 +34,8 @@ public:
         
     // }
     
+     
+    
     
     int lengthOfLIS(vector<int>& nums) {
         int idx=0;
@@ -54,7 +56,7 @@ public:
 //             len=max(len,1+ dp[idx+1][idx+1]);
 //         }
         
-//         dp[idx][prev_idx+1]=len;
+//         dp[idx][prev_idx+1]=len; 
 //             }
 //         }
 //         return dp[0][-1+1];
@@ -76,5 +78,36 @@ public:
             after=curr;
         }
         return after[-1+1];
+        
+        
+        
+        //algo req. for printing LIS
+//         vector<int>dp(n,1);
+//         vector<int>hash;
+//         int maxi=1;
+//         int lastidx=0;
+//         for(int i=0;i<n;i++){
+//             hash[i]=i;
+//             for(int prev=0;prev<i;prev++){
+//                 if(nums[prev]<nums[i] && 1+dp[prev]>dp[i] ){
+//                 dp[i]=1+dp[prev];
+//                     hash[i]=prev;
+//                 }
+//             }
+//             if(dp[i]>maxi){
+//                 maxi=dp[i];
+//                 lastidx=i;
+//             }
+//         }
+        
+        
+//         vector<int>temp;
+//         temp.push_back(nums[lastidx]);
+//         while(hash[lastidx]!=lastidx){
+//             lastidx=hash[lastidx];
+//             temp.push_back(nums[lastidx]);
+//         }
+//         reverse(temp.begin(),temp.end());
+        
     }
 };
