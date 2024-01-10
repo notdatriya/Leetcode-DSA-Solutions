@@ -11,6 +11,7 @@ public:
             else if(arr[low]==arr[mid] && arr[mid]==arr[high]){
                 low=low+1;
                 high=high-1;
+                continue;
             }
             
             else if(arr[low]<=arr[mid]){
