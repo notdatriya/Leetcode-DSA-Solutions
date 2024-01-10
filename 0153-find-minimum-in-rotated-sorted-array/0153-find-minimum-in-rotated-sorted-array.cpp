@@ -8,6 +8,10 @@ public:
         while(low<=high){
             int mid=low+(high-low)/2;
             
+            if(nums[mid]>=nums[low] && nums[mid]<=nums[high]){
+                mini=min(mini,nums[low]);
+                break;
+            }
             //sorted compo
             if(nums[low]<=nums[mid]){
                 mini=min(mini,nums[low]);
