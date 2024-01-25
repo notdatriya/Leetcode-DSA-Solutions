@@ -17,10 +17,10 @@ public:
         ListNode* temp2=head->next;
         
         while(temp2!=NULL && temp2->next!=NULL){
-            temp1->next=temp2->next;
+            temp1->next=temp2->next;    //or just temp1->next=temp1->next->next
             temp1=temp1->next;
             
-            temp2->next=temp1->next;
+            temp2->next=temp1->next;     //temp2->next=temp2->next->next
             temp2=temp2->next;  
         }
         
@@ -28,5 +28,8 @@ public:
         
        
         return head;
+        
+        
+        
     }
 };
