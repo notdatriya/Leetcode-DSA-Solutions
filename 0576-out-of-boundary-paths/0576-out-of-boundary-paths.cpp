@@ -2,11 +2,14 @@ class Solution {
 public:
     int mod=1e9+7;
     int solve(int x,int y,int m,int n,int maxmove,vector<vector<vector<int>>>&dp){
-        if(x<0 || x>m-1 || y<0 || y>n-1){
-            return 1;
+       if(maxmove==0) 
+        {
+           if(x>=m || x<0 || y>=n || y<0) return 1;
+           return 0; 
         }
         
-        if(maxmove==0)return 0;
+        if(x>=m || x<0 || y>=n || y<0) return 1;
+        
         if(dp[x][y][maxmove]!=-1)return dp[x][y][maxmove];
         
         int ans=0;
@@ -24,5 +27,6 @@ public:
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         vector<vector<vector<int>>>dp(m,vector<vector<int>>(n,vector<int>(maxMove+1,-1)));
         return solve(startRow,startColumn,m,n,maxMove,dp);
+        
     }
 };
