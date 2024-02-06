@@ -29,26 +29,57 @@ public:
         
         //better solution
         
+//         int n=height.size();
+//         vector<int>prefixmax(n);
+//         vector<int>suffixmax(n);
+        
+//         prefixmax[0]=height[0];
+        
+//         for(int i=1;i<n;i++){
+//             prefixmax[i]=max(prefixmax[i-1],height[i]);
+//         }
+        
+//         suffixmax[n-1]=height[n-1];
+        
+//         for(int i=n-2;i>=0;i--){
+//             suffixmax[i]=max(suffixmax[i+1],height[i]);
+//         }
+//         int waterTrapped = 0;
+//   for (int i = 0; i < n; i++) {
+//     waterTrapped += min(prefixmax[i], suffixmax[i]) - height[i];
+//   }
+//   return waterTrapped;
+        
+        
+        //optimal solution
+        
         int n=height.size();
-        vector<int>prefixmax(n);
-        vector<int>suffixmax(n);
+        int left=0;
+        int right=n-1;
+        int maxleft=0,maxright=0;
+        int ans=0;
         
-        prefixmax[0]=height[0];
-        
-        for(int i=1;i<n;i++){
-            prefixmax[i]=max(prefixmax[i-1],height[i]);
+        while(left<=right){
+            if(height[left]<=height[right]){
+                if(height[left]>=maxleft){
+                    maxleft=height[left];
+                }
+                else{
+                    ans+=maxleft-height[left];
+                }
+                left++;
+            }
+            else{
+                if(height[right]>=maxright){
+                    maxright=height[right];
+                }
+                else{
+                    ans+=maxright-height[right];
+                }
+                right--;
+            }
         }
-        
-        suffixmax[n-1]=height[n-1];
-        
-        for(int i=n-2;i>=0;i--){
-            suffixmax[i]=max(suffixmax[i+1],height[i]);
-        }
-        int waterTrapped = 0;
-  for (int i = 0; i < n; i++) {
-    waterTrapped += min(prefixmax[i], suffixmax[i]) - height[i];
-  }
-  return waterTrapped;
+        return ans;
         
         
         
