@@ -1,6 +1,17 @@
 class Solution {
 public:
-    
+    // int ispossible(int peri,vector<int>&nums){
+    //      long long previousElementsSum = 0;
+    // long long ans = -1;
+    // for (int i = 0; i < nums.size(); i++) {
+    //     if (i >= 2 && nums[i] < previousElementsSum) {
+    //         ans = nums[i] + previousElementsSum;
+    //     }
+    //     previousElementsSum += nums[i];
+    // }
+    // if(ans==-1)return 0;
+    //     return 1;
+    // }
 
     long long largestPerimeter(vector<int>& nums) {
         
@@ -15,7 +26,7 @@ public:
 //         while(low<=high){
 //             int mid=low+(high-low)/2;
             
-//             if(ispossible(mid,nums)){
+//             if(ispossible(mid,nums)==1){
 //                 low=mid+1;
 //             }
 //             else{
