@@ -9,7 +9,7 @@ public:
         mpp[0] = 1; 
         for (int i = 0; i < n; i++) {
             sum += nums[i];
-            if (mpp.find(sum - goal) != mpp.end()) {
+            if (mpp.find(sum-goal) != mpp.end()) {
                 count += mpp[sum - goal];
             }
             mpp[sum]++;
