@@ -9,7 +9,7 @@ public:
         if(dp[idx]!=-1)return dp[idx];
         
         for(int i=1;i<=nums[idx];i++){
-            if(i<nums.size() && solve(idx+i,nums,dp)){
+            if(solve(idx+i,nums,dp)){
                 return dp[idx]=1;
             }
         }
