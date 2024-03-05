@@ -10,10 +10,10 @@ public:
         
         for(int i=1;i<=nums[idx];i++){
             if(i<nums.size() && solve(idx+i,nums,dp)){
-                return true;
+                return dp[idx]=1;
             }
         }
-        return dp[idx]=false;
+        return dp[idx]=0;
         
     }
     bool canJump(vector<int>& nums) {
