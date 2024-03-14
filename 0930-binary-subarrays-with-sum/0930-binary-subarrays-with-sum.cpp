@@ -15,10 +15,6 @@ public:
             }
             mpp[sum]++;
         }
-        return count;
-        
-        
-        
-        
+        return count;        
     }
 };
