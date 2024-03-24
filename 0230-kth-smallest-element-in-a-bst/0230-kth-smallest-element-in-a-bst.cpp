@@ -26,10 +26,13 @@ public:
 	
 	return solve(root->right,k);  
     }
+ 
     int kthSmallest(TreeNode* root, int k) {
 	
 	TreeNode* node=solve(root,k);
         return node->val;
+        
+       
         
     }
 };
