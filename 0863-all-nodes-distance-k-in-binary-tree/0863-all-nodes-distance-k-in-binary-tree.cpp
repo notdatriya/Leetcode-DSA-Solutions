@@ -53,7 +53,7 @@ public:
                     vis[temp->right]=true;
                     q.push(temp->right);
                 }
-                if(mpp[temp] && !vis[mpp[temp]]){
+                if(mpp.find(temp)!=mpp.end() && !vis[mpp[temp]]){
                     vis[mpp[temp]]=true;
                     q.push(mpp[temp]);
                 }
