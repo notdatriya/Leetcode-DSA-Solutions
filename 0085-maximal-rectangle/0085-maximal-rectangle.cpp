@@ -38,7 +38,10 @@ public:
                     height[j]=0;
                 }
             }
-            
+    
+            for(auto it:height){
+                cout<<it<<" ";
+            }
             int area=findmaxarea(height);
             maxi=max(maxi,area);
         }
