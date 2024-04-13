@@ -30,7 +30,44 @@ public:
         
         
         
-        int l=0;
+//         int l=0;
+//         int r=0;
+//         int n=fruits.size();
+//         map<int,int>mpp;
+//         int maxi=0;
+//         while(r<n){
+//             mpp[fruits[r]]++;
+            
+//             if(mpp.size()>2){
+//                 while(mpp.size()>2){
+//                     mpp[fruits[l]]--;
+//                     if(mpp[fruits[l]]==0){
+//                         mpp.erase(fruits[l]);
+//                     }
+//                     l++;
+//                 }
+//             }
+            
+//             if(mpp.size()<=2){
+//                 maxi=max(maxi,r-l+1);
+//             }
+//             r++;
+//         }
+        
+//         return maxi;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //m-2 more optimal
+        
+         int l=0;
         int r=0;
         int n=fruits.size();
         map<int,int>mpp;
@@ -39,13 +76,13 @@ public:
             mpp[fruits[r]]++;
             
             if(mpp.size()>2){
-                while(mpp.size()>2){
+                // while(mpp.size()>2){
                     mpp[fruits[l]]--;
                     if(mpp[fruits[l]]==0){
                         mpp.erase(fruits[l]);
                     }
                     l++;
-                }
+                // }
             }
             
             if(mpp.size()<=2){
@@ -55,5 +92,7 @@ public:
         }
         
         return maxi;
+        
+        
     }
 };
