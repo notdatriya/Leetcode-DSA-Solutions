@@ -31,10 +31,13 @@ public:
         int length=0;
         while(r<n){
             if(mpp.find(s[r])!=mpp.end()){
-                l=max(mpp[s[r]]+1,l);
+                
+                if(mpp[s[r]]>=l){
+                l=mpp[s[r]]+1;
+                }
             }
-            mpp[s[r]]=r;
             length=max(length,r-l+1);
+            mpp[s[r]]=r;
             r++;
         }
         return length;
