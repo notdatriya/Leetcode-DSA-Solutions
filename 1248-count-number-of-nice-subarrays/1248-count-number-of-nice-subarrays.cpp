@@ -2,25 +2,48 @@ class Solution {
 public:
     
     
-    int atmost(vector<int>&nums,int k){
-        int n=nums.size();
-        int i=0;
+//     int atmost(vector<int>&nums,int k){
+//         int n=nums.size();
+//         int i=0;
+//         int count=0;
+//         for(int j=0;j<n;j++){
+//             if(nums[j]%2==1)k--;
+            
+//             while(k<0){
+//                 if(nums[i]%2==1){
+//                     k++;
+//                 }
+//                 i++;
+//             }
+            
+            
+//             count+=j-i+1;
+//         }
+//         return count;
+//     }
+    
+    
+    
+    int atmost(vector<int>&nums,int goal){
+        if(goal<0)return 0;
+        int l=0;
+        int r=0;
+        int sum=0;
         int count=0;
-        for(int j=0;j<n;j++){
-            if(nums[j]%2==1)k--;
+        int n=nums.size();
+        while(r<n){
+            sum+=(nums[r]%2);
             
-            while(k<0){
-                if(nums[i]%2==1){
-                    k++;
-                }
-                i++;
+            while(sum>goal){
+                sum-=(nums[l]%2);
+                l++;
             }
-            
-            
-            count+=j-i+1;
+            count+=(r-l+1);
+            r++;
         }
         return count;
     }
+    
     int numberOfSubarrays(vector<int>& nums, int k) {
 //         int n=nums.size();
         
