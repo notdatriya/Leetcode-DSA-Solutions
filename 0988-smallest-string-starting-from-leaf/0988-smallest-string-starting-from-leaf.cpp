@@ -16,7 +16,7 @@ public:
         if(node==NULL)return;
         
         if(!node->left && !node->right){
-            string currentPath = string(1, 'a' + node->val) + path;
+            string currentPath = char('a' + node->val) + path;
             if(currentPath.compare(mini)<0){
                 mini=currentPath;
                 return;
@@ -24,11 +24,11 @@ public:
         }
         
         if(node->left){
-            solve(node->left,string(1,'a'+node->val)+path,mini);
+            solve(node->left,char('a'+node->val)+path,mini);
         }
         
         if(node->right){
-            solve(node->right, string(1,'a'+ node->val)+path,mini);
+            solve(node->right, char('a'+ node->val)+path,mini);
         }
         
         
